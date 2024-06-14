@@ -1,6 +1,6 @@
 import { clerkMiddleware, authMiddleware } from '@clerk/nextjs/server';
 
-export default clerkMiddleware();
+export default clerkMiddleware({});
 
 // export default authMiddleware();
 
