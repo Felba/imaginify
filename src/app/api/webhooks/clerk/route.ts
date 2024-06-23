@@ -11,6 +11,8 @@ export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
   console.log('in webhooks/clerk/route.ts POST function');
+  console.log('WEBHOOK_SECRET:', WEBHOOK_SECRET);
+  console.log('req:', req);
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
