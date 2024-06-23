@@ -10,9 +10,6 @@ import { createUser, deleteUser, updateUser } from '@/lib/actions/user.actions';
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
-  console.log('in webhooks/clerk/route.ts POST function');
-  console.log('WEBHOOK_SECRET:', WEBHOOK_SECRET);
-  console.log('req:', req);
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
@@ -25,10 +22,6 @@ export async function POST(req: Request) {
   const svix_id = headerPayload.get('svix-id');
   const svix_timestamp = headerPayload.get('svix-timestamp');
   const svix_signature = headerPayload.get('svix-signature');
-
-  console.log('svix-id:', svix_id);
-  console.log('svix-timestamp:', svix_timestamp);
-  console.log('svix-signature:', svix_signature);
 
   // If there are no headers, error out
   if (!svix_id || !svix_timestamp || !svix_signature) {
@@ -48,10 +41,6 @@ export async function POST(req: Request) {
 
   // Verify the payload with the headers
   try {
-    console.log(
-      'in try block of POST function in webhooks/clerk/route.ts. body: ',
-      body
-    );
     evt = wh.verify(body, {
       'svix-id': svix_id,
       'svix-timestamp': svix_timestamp,

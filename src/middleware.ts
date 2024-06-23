@@ -29,8 +29,6 @@
 
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-console.log('In middleware.ts');
-
 // const isProtectedRoute = createRouteMatcher(['/', '/credits(.*)']);
 const isProtectedRoute = createRouteMatcher(['/credits(.*)']);
 
